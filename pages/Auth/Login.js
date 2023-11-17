@@ -1,23 +1,61 @@
-import React from 'react';
-//import { useHistory } from 'react-router-dom';
+// pages/Auth/Login.js
+
+import React, { useContext } from "react";
+//import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
-  //const history = useHistory();
+  const backgroundStyles = {
+    backgroundImage: "url('/banner2.jpg')",
+    backgroundSize: 'cover',
+    // Other background properties
+  };
 
   const centerBox = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
+    minHeight: '100vh',
   };
 
   const formBox = {
-    width: '300px',
+    width: '80%', // Adjusted width for responsiveness
+    maxWidth: '400px', // Maximum width for larger screens
+    margin: 'auto',
     padding: '20px',
     border: '1px solid #ccc',
     borderRadius: '8px',
     backgroundColor: '#f9f9f9',
+    background: "url('/banner2.jpg')", // Applying the same background image to the form
+    backgroundSize: 'cover',
   };
+
+  const inputStyle = {
+    background: 'rgba(255, 255, 255, 0.8)', // Adjust opacity or any other properties
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    padding: '8px',
+    marginBottom: '10px',
+    width: '100%',
+  };
+
+  const linkStyle = {
+    color: 'white', // Change the color of the link to blue
+    textDecoration: 'none', // Remove the underline
+    marginLeft: '100px', // Add some spacing between "Remember me" and the link
+  };
+
+  const rememberMeStyle = {
+    color: 'white', // Change the color of the "Remember me" text to white
+  };
+  const PasswordStyle = {
+    color: 'white', // Change the color of the "Remember me" text to white
+  };
+  const EmailStyle = {
+    color: 'white', // Change the color of the "Remember me" text to white
+  };
+
+  
+  
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -36,6 +74,10 @@ const Login = () => {
       });
 
       if (response.ok) {
+        // Get the user data from the response and set it in the context
+        const userData = await response.json(); // assuming the API sends user data upon successful login
+        setUserData(userData);
+
         // Redirect to home page after successful login
         history.push('/home');
       } else {
@@ -48,22 +90,25 @@ const Login = () => {
   };
 
   return (
-    <div style={centerBox}>
-      <form style={formBox} onSubmit={handleLogin}>
-        <div class="form-group">
-          <label for="exampleDropdownFormEmail2">Email address</label>
-          <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com" />
-        </div>
-        <div class="form-group">
-          <label for="exampleDropdownFormPassword2">Password</label>
-          <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password" />
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="dropdownCheck2" />
-          <label class="form-check-label" for="dropdownCheck2">Remember me</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-      </form>
+    <div style={backgroundStyles}>
+      <div style={centerBox}>
+        <form style={formBox} onSubmit={handleLogin}>
+          <div className="form-group">
+            <label htmlFor="exampleDropdownFormEmail2" style={EmailStyle}>Email address</label>
+            <input type="email" className="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com" style={inputStyle} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleDropdownFormPassword2" style={PasswordStyle}>Password</label>
+            <input type="password" className="form-control" id="exampleDropdownFormPassword2" placeholder="Password" style={inputStyle} />
+          </div>
+          <div className="form-check">
+            <input type="checkbox" className="form-check-input" id="dropdownCheck2" />
+            <label className="form-check-label" htmlFor="dropdownCheck2" style={rememberMeStyle}>Remember me</label>
+            <a href="/Auth/Register" style={linkStyle}>Register here</a>
+          </div>
+          <button type="submit" className="btn btn-primary" style={{ marginTop: '10px' }}>Log in</button>
+        </form>
+      </div>
     </div>
   );
 };
