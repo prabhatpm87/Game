@@ -1,6 +1,7 @@
 // pages/Auth/Login.js
 
 import React, { useContext } from "react";
+import Link from "next/link";
 //import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
@@ -104,7 +105,7 @@ const Login = () => {
           <div className="form-check">
             <input type="checkbox" className="form-check-input" id="dropdownCheck2" />
             <label className="form-check-label" htmlFor="dropdownCheck2" style={rememberMeStyle}>Remember me</label>
-            <a href="/Auth/Register" style={linkStyle}>Register here</a>
+            <Link href="/Auth/Register" style={linkStyle}>Register here</Link>
           </div>
           <button type="submit" className="btn btn-primary" style={{ marginTop: '10px' }}>Log in</button>
         </form>

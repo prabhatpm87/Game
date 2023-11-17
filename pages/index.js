@@ -125,9 +125,9 @@ export default function Home() {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link" href="/components/Rules">
+                  <Link className="nav-link" href="/components/Rules">
                     Read Rules
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <Link href="/Auth/recharge">
@@ -213,7 +213,7 @@ export default function Home() {
             }}
           >
             <div style={{ marginTop: "19px", textAlign: "center" }}>
-              <a href="/components/referNearn">
+              <Link href="/components/referNearn">
                 <Image
                   src="/smartphone.png"
                   alt="Image 1"
@@ -221,10 +221,10 @@ export default function Home() {
                   height={60}
                 />
                 <p>Refer & Earn</p>
-              </a>
+              </Link>
             </div>
             <div style={{ marginTop: "19px", textAlign: "center" }}>
-              <a href="/components/myaccount">
+              <Link href="/components/myaccount">
                 <Image
                   src="/My Account.png"
                   alt="Image 3"
@@ -232,10 +232,10 @@ export default function Home() {
                   height={50}
                 />
                 <p>My Account</p>
-              </a>
+              </Link>
             </div>
             <div style={{ marginTop: "19px", textAlign: "center" }}>
-              <a href="/components/Dashboard">
+              <Link href="/components/Dashboard">
                 <Image
                   src="/Dashboard.png"
                   alt="Image 3"
@@ -243,7 +243,7 @@ export default function Home() {
                   height={50}
                 />
                 <p>Dashboard</p>
-              </a>
+              </Link>
             </div>
           </div>
         </footer>
