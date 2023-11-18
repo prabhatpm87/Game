@@ -86,14 +86,13 @@ export default function Home() {
 
   const timerStyle = {
     fontSize: "70px",
+    marginLeft: "1000px",
     fontFamily: "'Playpen Sans', cursive",
     color: time > 601 ? "red" : "green",
-    textAlign: "center", // Center the timer text
-    marginLeft: "500px",
   };
 
   const UserListStyle = {
-    marginTop: "50px",
+    marginTop: "50px", // Adjust the marginTop value as needed
     margin: "0 50px",
     backgroundColor: "white",
   };
@@ -103,83 +102,6 @@ export default function Home() {
     padding: "5px 10px",
     backgroundColor: "white",
   };
-
-  const responsiveStyles = {
-    // Responsive styles for large screens (greater than 1200px)
-    '@media (min-width: 1200px)': {
-      timerStyle: {
-        fontSize: '80px',
-      },
-      UserListStyle: {
-        margin: '0 100px',
-      },
-    },
-
-    // Responsive styles for medium screens (between 768px and 1200px)
-    '@media (max-width: 1200px) and (min-width: 768px)': {
-      timerStyle: {
-        fontSize: '60px',
-        marginLeft: '500px',
-      },
-      UserListStyle: {
-        margin: '0 20px',
-      },
-    },
-
-    // Responsive styles for small screens (up to 767px)
-    '@media (max-width: 767px)': {
-      timerStyle: {
-        fontSize: '40px',
-        marginLeft: '20px',
-      },
-      UserListStyle: {
-        margin: '0 10px',
-      },
-    },
-    '@media (max-width: 740px)': {
-      rechargeButtonStyle: {
-        marginTop: '10px', // Adjust the top margin as needed
-      },
-    },
-  
-    // Responsive styles for screens below 640px
-    '@media (max-width: 640px)': {
-      timerStyle: {
-        fontSize: '30px',
-        marginLeft: '10px',
-      },
-      UserListStyle: {
-        margin: '0 5px',
-      },
-      contentContainer: {
-        width: '100%', // Make the content take full screen width
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-      rechargeButtonStyle: {
-        marginTop: '10px', // Adjust the top margin as needed
-      },
-    },
-  
-
-    // Responsive styles for extra small screens (up to 640px)
-    '@media (max-width: 640px)': {
-      timerStyle: {
-        fontSize: '30px',
-        marginLeft: '10px',
-      },
-      UserListStyle: {
-        margin: '0 5px',
-      },
-      contentContainer: {
-        width: '100%', // Make the content take full screen width
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-    },
-    
-  };
-  
 
   return (
     <div>
@@ -201,6 +123,13 @@ export default function Home() {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link className="nav-link" href="/components/Rules">
+                    Read Rules
+                  </Link>
+                </li>
+              </ul>
               <Link href="/Auth/recharge">
                 <button className="btn btn-outline-success" type="submit">
                   Recharge
@@ -219,10 +148,10 @@ export default function Home() {
           backgroundPosition: "center",
         }}
       >
-        <p style={{ ...timerStyle, ...responsiveStyles.timerStyle }}>
+        <p style={timerStyle}>
           {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
         </p>
-        <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "80px" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "20px",marginBottom:"80px" }}>
           <div
             style={{
               textDecoration: "none",
@@ -257,7 +186,7 @@ export default function Home() {
             onClick={handleTileClick}
           ></div>
         </div>
-        <div style={{ ...UserListStyle, ...responsiveStyles.UserListStyle, ...responsiveStyles.contentContainer }}>
+        <div style={UserListStyle}>
           {/* Conditionally render winner or loser content */}
           {result === "winner" && (
             <div>
