@@ -16,7 +16,8 @@ const UserList = ({ loggedInUser }) => {
           border: "none",
           width: "100%",
           maxHeight: "100px", // Adjust the height as needed
-          marginLeft: "10px"
+          marginLeft: "10px",
+          marginBottom:"0px"
         }}
       >
         <h2>Summary</h2>

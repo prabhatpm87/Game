@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import UserList from "./components/UserList1";
 import Link from "next/link";
 
-export default function Home() {
+const Home = () => {
   const [time, setTime] = useState(900);
   const [canClick, setCanClick] = useState(true);
   const [tileClicked, setTileClicked] = useState(false);
@@ -18,7 +18,7 @@ export default function Home() {
     withdrawal: 50,
     available: 1000,
   });
-  const [result, setResult] = useState(null); // "winner", "loser", or null
+  const [result, setResult] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -47,6 +47,16 @@ export default function Home() {
     fetchAvailableBalance();
   }, []);
 
+  useEffect(() => {
+    // For now, let's use a placeholder for authentication check
+    const isAuthenticated = true; // Replace this with your authentication logic
+
+    // If the user is not authenticated, redirect to the login page
+    if (!isAuthenticated) {
+      router.push("/Auth/Login");
+    }
+  }, []); // The empty dependency array ensures this effect runs only once on component mount
+
   const fetchAvailableBalance = async () => {
     try {
       const response = await fetch("your_api_endpoint");
@@ -62,13 +72,42 @@ export default function Home() {
   };
 
   const handleGameResult = () => {
-    // Simulate winning or losing based on some condition
-    const userWins = Math.random() < 0.5; // Replace this with your actual win/lose condition
+    const userWins = Math.random() < 0.5;
 
     if (userWins) {
       setResult("winner");
     } else {
       setResult("loser");
+    }
+  };
+
+  const handleMyAccountClick = async () => {
+    try {
+      const response = await fetch("http://51.20.79.158/user/v1/user_details", {
+        method: "POST", // Change the method to GET
+        headers: {
+          "Content-Type": "application/json",
+          // Add any additional headers if needed
+        },
+      });
+
+      if (response.ok) {
+        const myAccountData = await response.json();
+
+        // Update the state with the received user details
+        setLoggedInUser({
+          name: myAccountData.name,
+          amountWon: myAccountData.wallet_ballance,
+          playedTimes: myAccountData.total_wins + myAccountData.total_losses,
+        });
+
+        // Navigate to the My Account page after a successful API call
+        router.push("/components/myaccount");
+      } else {
+        console.error("Failed to fetch My Account data");
+      }
+    } catch (error) {
+      console.error("Error fetching My Account data:", error);
     }
   };
 
@@ -85,124 +124,72 @@ export default function Home() {
   const seconds = time % 60;
 
   const timerStyle = {
-    fontSize: "70px",
+    fontSize: "4vw", // Set the font size as a percentage of viewport width
+    marginTop: "0px",
+    marginBottom: "0px",
+    marginLeft: "1100px", // Set the left margin as a percentage of the container width
     fontFamily: "'Playpen Sans', cursive",
     color: time > 601 ? "red" : "green",
-    textAlign: "center", // Center the timer text
-    marginLeft: "500px",
+  
+    // Media query for smaller screens (adjust the values as needed)
+    '@media (max-width: 600px)': {
+      fontSize: '8vw',
+    },
   };
+  
+  
 
   const UserListStyle = {
-    marginTop: "50px",
+    marginTop: "250px",
     margin: "0 50px",
     backgroundColor: "white",
+    marginBottom: "auto",
   };
 
   const balanceStyle = {
     border: "2px solid black",
-    padding: "5px 10px",
+    padding: "5px",
     backgroundColor: "white",
-  };
-
-  const responsiveStyles = {
-    // Responsive styles for large screens (greater than 1200px)
-    '@media (min-width: 1200px)': {
-      timerStyle: {
-        fontSize: '80px',
-      },
-      UserListStyle: {
-        margin: '0 100px',
-      },
-    },
-
-    // Responsive styles for medium screens (between 768px and 1200px)
-    '@media (max-width: 1200px) and (min-width: 768px)': {
-      timerStyle: {
-        fontSize: '60px',
-        marginLeft: '500px',
-      },
-      UserListStyle: {
-        margin: '0 20px',
-      },
-    },
-
-    // Responsive styles for small screens (up to 767px)
-    '@media (max-width: 767px)': {
-      timerStyle: {
-        fontSize: '40px',
-        marginLeft: '20px',
-      },
-      UserListStyle: {
-        margin: '0 10px',
-      },
-    },
-    '@media (max-width: 740px)': {
-      rechargeButtonStyle: {
-        marginTop: '10px', // Adjust the top margin as needed
-      },
-    },
-  
-    // Responsive styles for screens below 640px
-    '@media (max-width: 640px)': {
-      timerStyle: {
-        fontSize: '30px',
-        marginLeft: '10px',
-      },
-      UserListStyle: {
-        margin: '0 5px',
-      },
-      contentContainer: {
-        width: '100%', // Make the content take full screen width
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-      rechargeButtonStyle: {
-        marginTop: '10px', // Adjust the top margin as needed
-      },
-    },
-  
-
-    // Responsive styles for extra small screens (up to 640px)
-    '@media (max-width: 640px)': {
-      timerStyle: {
-        fontSize: '30px',
-        marginLeft: '10px',
-      },
-      UserListStyle: {
-        margin: '0 5px',
-      },
-      contentContainer: {
-        width: '100%', // Make the content take full screen width
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-    },
-    
+    marginLeft:"5px",
+    width:"240px",
+    height:"30px",
+    textAlign:"center",
+    fontSize:"20px",
+    borderRadius:"5px"
   };
   
+
+  const backgroundContainerStyle = {
+    opacity: 0.9,
+    backgroundImage: "url('/banner2.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "100vh",
+  };
 
   return (
     <div>
       <div>
-        <nav
-          style={{ backgroundColor: "#e3f2fd" }}
-          className="navbar navbar-expand-lg"
-        >
-          <div className="container-fluid">
-            <div className="container-fluid">
-              <p className="navbar-brand">
-                <span style={balanceStyle}>
-                  Available Balance: &#8377;{user.available}
-                </span>
-              </p>
-            </div>
-
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
+        <nav style={{ backgroundColor: "#e3f2fd",height:"100px",width:"100%" }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <p style={balanceStyle}>
+              Available Balance: &#8377;{user.available}
+            </p>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <Link href="/Auth/recharge">
-                <button className="btn btn-outline-success" type="submit">
+                <button
+                  style={{
+                    border: "2px solid black",
+                    padding: "5px 0px",
+                    backgroundColor: "#28a745",
+                    color: "white",
+                    marginRight:"10px",
+                    width:"150px",
+                    height:"45px",
+                    fontSize:"20px",
+                    borderRadius:"5px"
+                  }}
+                >
                   Recharge
                 </button>
               </Link>
@@ -211,18 +198,18 @@ export default function Home() {
         </nav>
       </div>
 
-      <div
-        style={{
-          opacity: 0.9,
-          backgroundImage: "url('/banner2.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <p style={{ ...timerStyle, ...responsiveStyles.timerStyle }}>
+      <div style={backgroundContainerStyle}>
+        <p style={timerStyle}>
           {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
         </p>
-        <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "80px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            marginBottom: "80px",
+          }}
+        >
           <div
             style={{
               textDecoration: "none",
@@ -257,26 +244,13 @@ export default function Home() {
             onClick={handleTileClick}
           ></div>
         </div>
-        <div style={{ ...UserListStyle, ...responsiveStyles.UserListStyle, ...responsiveStyles.contentContainer }}>
-          {/* Conditionally render winner or loser content */}
-          {result === "winner" && (
-            <div>
-              <h1>Congratulations! You Win!</h1>
-              {/* Add any other content for the winner */}
-            </div>
-          )}
-          {result === "loser" && (
-            <div>
-              <h1>Better Luck Next Time!</h1>
-              {/* Add any other content for the loser */}
-            </div>
-          )}
-          {result === null && <UserList loggedInUser={loggedInUser} />}
+        <div style={UserListStyle}>
+          <UserList loggedInUser={loggedInUser} />
         </div>
-        <footer className="text-center bg-gradient py-0">
+        <footer >
           <div
             style={{
-              marginTop: "0px",
+              
               background: "#e3f2fd",
               boxShadow: "0px 5px 5px -5px rgba(0, 0, 0, 0.75)",
               display: "flex",
@@ -284,27 +258,22 @@ export default function Home() {
             }}
           >
             <div style={{ marginTop: "19px", textAlign: "center" }}>
-              <Link href="/components/referNearn">
-                <Image
-                  src="/smartphone.png"
-                  alt="Image 1"
-                  width={60}
-                  height={60}
-                />
-                <p>Refer & Earn</p>
-              </Link>
+              <div onClick={handleMyAccountClick}>
+                <Link
+                  href="/components/myaccount"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Image
+                    src="/My Account.png"
+                    alt="Image 3"
+                    width={50}
+                    height={50}
+                  />
+                  <p>My Account</p>
+                </Link>
+              </div>
             </div>
-            <div style={{ marginTop: "19px", textAlign: "center" }}>
-              <Link href="/components/myaccount">
-                <Image
-                  src="/My Account.png"
-                  alt="Image 3"
-                  width={50}
-                  height={50}
-                />
-                <p>My Account</p>
-              </Link>
-            </div>
+
             <div style={{ marginTop: "19px", textAlign: "center" }}>
               <Link href="/components/Dashboard">
                 <Image
@@ -321,4 +290,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

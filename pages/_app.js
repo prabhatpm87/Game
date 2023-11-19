@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import "@/styles/globals.css";
 import React from 'react';
 //import { UserProvider } from '../path-to-your-provider/UserProvider'; // Ensure this path is correct

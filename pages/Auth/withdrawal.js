@@ -39,34 +39,46 @@ const Recharge = () => {
 
   const rupeeSymbolStyle = {
     position: 'absolute',
-    top: '50%',
+    top: '40%',
     transform: 'translateY(-50%)',
     left: '10px',
     color: 'black',
+    fontSize:"30px"
+  };
+
+  const labelStyle = {
+    fontSize: '22px', // Increased font size
+    marginBottom: '5px', // Adjusted margin
   };
 
   const inputStyle = {
-    padding: '10px',
+    padding: '12px',
     paddingLeft: '30px',
     width: '100%',
     boxSizing: 'border-box',
+    marginBottom: '15px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    fontSize: '22px',
   };
 
   const buttonStyle = {
-    padding: '10px',
+    padding: '14px',
     width: '100%',
     backgroundColor: '#4CAF50',
     color: 'white',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '8px',
     cursor: 'pointer',
-    marginTop:"20px"
+    fontSize: '18px',
   };
 
   return (
     <div style={backgroundStyle}>
       <form style={formStyle} onSubmit={handleSubmit}>
-        <label htmlFor="upiId">UPI ID:</label>
+        <label htmlFor="upiId" style={labelStyle}>
+          UPI ID:
+        </label>
         <input
           type="text"
           id="upiId"
@@ -76,7 +88,9 @@ const Recharge = () => {
           style={inputStyle}
         />
 
-        <label htmlFor="amount">Withdrawl Amount:</label>
+        <label htmlFor="amount" style={labelStyle}>
+          Withdrawal Amount:
+        </label>
         <div style={inputContainerStyle}>
           <span style={rupeeSymbolStyle}>₹</span>
           <input
