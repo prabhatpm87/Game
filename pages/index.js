@@ -304,6 +304,17 @@ const balanceStyle = {
             }}
           >
             <div style={{ marginTop: "19px", textAlign: "center" }}>
+              <Link href="/components/Dashboard">
+                <Image
+                  src="/Dashboard.png"
+                  alt="Image 3"
+                  width={30}
+                  height={30}
+                />
+                <p style={{marginTop:"1px"}}>Dashboard</p>
+              </Link>
+            </div>
+            <div style={{ marginTop: "19px", textAlign: "center" }}>
               <div onClick={handleMyAccountClick}>
                 <Link
                   href="/components/myaccount"
@@ -318,18 +329,6 @@ const balanceStyle = {
                   <p style={{marginTop:"1px"}}>My Account</p>
                 </Link>
               </div>
-            </div>
-
-            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"500px" }}>
-              <Link href="/components/Dashboard">
-                <Image
-                  src="/Dashboard.png"
-                  alt="Image 3"
-                  width={30}
-                  height={30}
-                />
-                <p style={{marginTop:"1px"}}>Dashboard</p>
-              </Link>
             </div>
           </div>
         </footer>
