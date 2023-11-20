@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import UserList from "./components/UserList1";
 import Link from "next/link";
+import Head from 'next/head';
 
 const Home = () => {
   const [time, setTime] = useState(900);
@@ -120,57 +121,96 @@ const Home = () => {
     }
   };
 
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
-
-  const timerStyle = {
-    fontSize: "4vw", // Set the font size as a percentage of viewport width
-    marginTop: "0px",
-    marginBottom: "0px",
-    marginLeft: "850px", // Set the left margin as a percentage of the container width
-    fontFamily: "'Playpen Sans', cursive",
-    color: time > 601 ? "red" : "green",
-  
-    // Media query for smaller screens (adjust the values as needed)
-    '@media (max-width: 600px)': {
-      fontSize: '8vw',
-    },
-  };
-  
-  
-
-  const UserListStyle = {
-    marginTop: "250px",
-    margin: "0 50px",
-    backgroundColor: "white",
-    marginBottom: "auto",
-  };
-
-  const balanceStyle = {
-    border: "2px solid black",
-    padding: "5px",
-    backgroundColor: "white",
-    marginLeft:"5px",
-    width:"240px",
-    height:"30px",
-    textAlign:"center",
-    fontSize:"20px",
-    borderRadius:"5px"
-  };
-  
-
   const backgroundContainerStyle = {
     opacity: 0.9,
     backgroundImage: "url('/banner2.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     minHeight: "100vh",
+    position: "relative", // Make the position relative
+
+    '@media (max-width: 768px)': {
+      backgroundSize: "contain", // Adjust background size for smaller screens
+    },
   };
 
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+
+  const timerStyle = {
+  fontSize: "4vw",
+  marginTop: "0px",
+  marginBottom: "0px",
+  marginLeft: "5%", // Adjusted margin for smaller screens
+  fontFamily: "'Playpen Sans', cursive",
+  color: time > 601 ? "red" : "green",
+
+  '@media (min-width: 600px)': {
+    fontSize: "6vw", // Adjusted font size for medium screens
+  },
+
+  '@media (min-width: 768px)': {
+    fontSize: "8vw", // Adjusted font size for large screens
+    marginLeft: "2%", // Adjusted margin for larger screens
+  },
+};
+  
+const UserListStyle = {
+  marginTop: "auto", // Use auto to push the UserList to the bottom
+  marginBottom: "80px", // Space for the footer
+  backgroundColor: "white",
+  marginLeft: "10px", // Adjust margin based on your design
+  marginRight: "10px", // Adjust margin based on your design
+
+  '@media (max-width: 768px)': {
+    marginTop: "50px", // Adjusted value for smaller screens
+    marginLeft: "5px", // Adjusted margin for smaller screens
+    marginRight: "5px", // Adjusted margin for smaller screens
+  },
+  '@media (max-width: 600px)': {
+    marginTop: "30px", // Further adjustment for even smaller screens
+    marginLeft: "2px", // Adjusted margin for even smaller screens
+    marginRight: "2px", // Adjusted margin for even smaller screens
+  },
+};
+
+  const balanceStyle = {
+    border: "2px solid black",
+    padding: "5px",
+    backgroundColor: "white",
+    marginLeft: "5px",
+    width: "240px",
+    height: "30px",
+    textAlign: "center",
+    fontSize: "20px",
+    borderRadius: "5px",
+  
+    '@media (max-width: 768px)': {
+      width: "180px", // Adjusted width for smaller screens
+    },
+  };
+
+  const footerStyle = {
+    background: "#e3f2fd",
+    boxShadow: "0px 5px 5px -5px rgba(0, 0, 0, 0.75)",
+    display: "flex",
+    justifyContent: "space-around",
+    height: "80px",
+    position: "absolute", // Position the footer absolutely
+    bottom: 0, // Place the footer at the bottom
+    width: "100%", // Ensure the footer spans the full width
+  };
+  
+
   return (
+    <>
+    <Head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </Head>
+
     <div>
       <div>
-        <nav style={{ backgroundColor: "#e3f2fd",height:"100px",width:"100%" }}>
+        <nav style={{ backgroundColor: "#e3f2fd",height:"80px",width:"100%" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <p style={balanceStyle}>
               Available Balance: &#8377;{user.available}
@@ -247,14 +287,14 @@ const Home = () => {
         <div style={UserListStyle}>
           <UserList loggedInUser={loggedInUser} />
         </div>
-        <footer >
+        <footer style={footerStyle}>
           <div
             style={{
-              
               background: "#e3f2fd",
               boxShadow: "0px 5px 5px -5px rgba(0, 0, 0, 0.75)",
               display: "flex",
               justifyContent: "space-around",
+              height:"80px",
             }}
           >
             <div style={{ marginTop: "19px", textAlign: "center" }}>
@@ -266,10 +306,10 @@ const Home = () => {
                   <Image
                     src="/My Account.png"
                     alt="Image 3"
-                    width={50}
-                    height={50}
+                    width={30}
+                    height={30}
                   />
-                  <p>My Account</p>
+                  <p style={{marginTop:"1px"}}>My Account</p>
                 </Link>
               </div>
             </div>
@@ -279,16 +319,17 @@ const Home = () => {
                 <Image
                   src="/Dashboard.png"
                   alt="Image 3"
-                  width={50}
-                  height={50}
+                  width={30}
+                  height={30}
                 />
-                <p>Dashboard</p>
+                <p style={{marginTop:"1px"}}>Dashboard</p>
               </Link>
             </div>
           </div>
         </footer>
       </div>
     </div>
+    </>
   );
 };
 

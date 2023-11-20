@@ -15,7 +15,7 @@ const UserList = ({ loggedInUser }) => {
           justifyContent: "space-between",
           border: "none",
           width: "100%",
-          maxHeight: "100px", // Adjust the height as needed
+          maxHeight: "70px", // Adjust the height as needed
           marginLeft: "10px",
           marginBottom:"0px"
         }}
@@ -27,7 +27,7 @@ const UserList = ({ loggedInUser }) => {
           border: "none",
           width: "100%",
           overflowY: "auto",
-          maxHeight: "300px", // Adjust the height as needed
+          maxHeight: "200px", // Adjust the height as needed
           marginLeft:"10px"
         }}
       >
