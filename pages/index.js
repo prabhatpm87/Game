@@ -177,22 +177,25 @@ const UserListStyle = {
   },
 };
 
-  const balanceStyle = {
-    border: "2px solid black",
-    padding: "5px",
-    backgroundColor: "white",
-    marginLeft: "5px",
-    width: "240px",
-    height: "30px",
-    textAlign: "center",
-    fontSize: "20px",
-    borderRadius: "5px",
-  
-    '@media (max-width: 768px)': {
-      width: "180px", // Adjusted width for smaller screens
-    },
-  };
+const balanceStyle = {
+  border: "2px solid black",
+  padding: "5px",
+  backgroundColor: "white",
+  marginLeft: "5px",
+  width: "240px",
+  height: "30px",
+  textAlign: "center",
+  fontSize: "20px",
+  borderRadius: "5px",
 
+  '@media (max-width: 768px)': {
+    width: "180px", // Adjusted width for smaller screens
+  },
+
+  '@media (min-width: 1024px)': {
+    width: "300px", // Adjusted width for larger screens
+  },
+};
   const footerStyle = {
     background: "#e3f2fd",
     boxShadow: "0px 5px 5px -5px rgba(0, 0, 0, 0.75)",
