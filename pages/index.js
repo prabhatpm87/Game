@@ -317,7 +317,7 @@ const UserListStyle = {
               </div>
             </div>
 
-            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"700px" }}>
+            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"500px" }}>
               <Link href="/components/Dashboard">
                 <Image
                   src="/Dashboard.png"

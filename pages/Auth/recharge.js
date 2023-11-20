@@ -60,12 +60,31 @@ const Recharge = () => {
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginTop:"20px"
+    marginTop: '20px',
+  };
+
+  // Responsive styles using media queries
+  const mediaQueryStyles = {
+    formStyle: {
+      maxWidth: '300px', // Adjust maximum width for medium and large screens
+    },
+    inputStyle: {
+      padding: '10px',
+      paddingLeft: '30px',
+      width: '100%',
+      boxSizing: 'border-box',
+      '@media (min-width: 600px)': {
+        width: 'calc(80% - 40px)', // Adjust width for medium screens
+      },
+      '@media (min-width: 768px)': {
+        width: 'calc(100% - 40px)', // Adjust width for large screens
+      },
+    },
   };
 
   return (
     <div style={backgroundStyle}>
-      <form style={formStyle} onSubmit={handleSubmit}>
+      <form style={{ ...formStyle, ...mediaQueryStyles.formStyle }} onSubmit={handleSubmit}>
         <label htmlFor="upiId">UPI ID:</label>
         <input
           type="text"
@@ -73,7 +92,7 @@ const Recharge = () => {
           name="upiId"
           value={upiId}
           onChange={(e) => setUpiId(e.target.value)}
-          style={inputStyle}
+          style={mediaQueryStyles.inputStyle}
         />
 
         <label htmlFor="amount">Amount:</label>
@@ -85,7 +104,7 @@ const Recharge = () => {
             name="amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            style={inputStyle}
+            style={mediaQueryStyles.inputStyle}
           />
         </div>
 
@@ -96,7 +115,7 @@ const Recharge = () => {
           name="transactionId"
           value={transactionId}
           onChange={(e) => setTransactionId(e.target.value)}
-          style={inputStyle}
+          style={mediaQueryStyles.inputStyle}
         />
 
         <button type="submit" style={buttonStyle}>

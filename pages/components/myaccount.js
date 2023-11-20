@@ -51,7 +51,7 @@ const MyAccount = () => {
     router.push("/Auth/Login");
   };
 
-  const userInitials = getInitials(user.username);
+  const userInitials = user ? getInitials(user.username) : '';
 
   const avatarStyle = {
     width: "70px",
