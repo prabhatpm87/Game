@@ -57,7 +57,7 @@ const Registration = () => {
     borderRadius: '5px',
     padding: '8px',
     marginBottom: '10px',
-    width: '100%',
+    width: '90%',
     paddingRight: '30px', // Add padding for the eye icon
   };
 

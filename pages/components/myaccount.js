@@ -42,8 +42,8 @@ const MyAccount = () => {
   const userInitials = getInitials(user.username);
 
   const avatarStyle = {
-    width: "180px",
-    height: "180px",
+    width: "70px",
+    height: "70px",
     borderRadius: "50%",
     backgroundColor: "#007BFF",
     display: "flex",
@@ -54,25 +54,26 @@ const MyAccount = () => {
   };
 
   const userInfoStyles = {
-    width: "100%",
+    width: "400px",
     backgroundColor: "gray",
     padding: "0px",
     borderRadius: "0px",
-    marginTop: "10px",
+    marginTop: "100px",
     marginLeft: "0px",
-    height: "300px",
+    height: "200px",
     fontSize: "20px"
   };
   const userInfoStyle = {
-    width: "100%",
+    width: "396px",
     backgroundColor: "#e6e6e6",
     padding: "2px",
     borderRadius: "0px",
     marginTop: "0px",
-    marginLeft: "0px",
+    marginBottom: "0px",
     display: "flex",
     alignItems: "center",
     textAlign: "center",
+    height:"50px"
   };
   
   const buttonStyle = {
@@ -88,7 +89,7 @@ const MyAccount = () => {
     width:"200px"
   };
   const buttonStyles = {
-    marginLeft: "419px",
+    marginLeft: "269px",
     marginTop:"10px",
     marginBottom: "10px",
     padding: "8px",
@@ -110,11 +111,12 @@ const MyAccount = () => {
     <div style={backgroundStyles}>
       <div
         style={{
-          width: "550px",
+          width: "350px",
           padding: "0px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          height:"300"
         }}
       >
         <div style={userInfoStyles}>
@@ -138,20 +140,20 @@ const MyAccount = () => {
         <div style={userInfoStyle}>
           <p style={increasedFontSize}>
             Email: {user.email}
-            <MdModeEdit style={{ marginLeft: "200px" }} />
+            <MdModeEdit style={{ marginLeft: "100px" }} />
           </p>
         </div>
         <div style={userInfoStyle}>
           <p style={increasedFontSize}>
             Phone No: {user.referralId}
-            <MdModeEdit style={{ marginLeft: "310px" }} />
+            <MdModeEdit style={{ marginLeft: "200px" }} />
           </p>
         </div>
         <div style={userInfoStyle}>
           <p style={increasedFontSize}>
             Available Balance: ₹{user.available}
             <Link href="/Auth/withdrawal">
-              <BiMoneyWithdraw style={{ marginLeft: "250px" }} />
+              <BiMoneyWithdraw style={{ marginLeft: "140px" }} />
             </Link>
           </p>
         </div>
@@ -159,7 +161,7 @@ const MyAccount = () => {
           <p style={increasedFontSize}>
             Referral ID: {user.referralId}
             {/* Share icon */}
-            <ImShare2  style={{ marginLeft: "300px" }} />
+            <ImShare2  style={{ marginLeft: "185px" }} />
           </p>
         </div>
         <div style={userInfoStyle}>
@@ -194,7 +196,8 @@ const MyAccount = () => {
           </Link>
         </div>
 
-        <div style={userInfoStyle}>
+        
+        <div style={{ ...userInfoStyle, marginBottom: '100px' }}>
           <Link href="/settings">
             <button style={buttonStyle}>
               <div style={increasedFontSize}>Settings</div>

@@ -127,7 +127,7 @@ const Home = () => {
     fontSize: "4vw", // Set the font size as a percentage of viewport width
     marginTop: "0px",
     marginBottom: "0px",
-    marginLeft: "1100px", // Set the left margin as a percentage of the container width
+    marginLeft: "850px", // Set the left margin as a percentage of the container width
     fontFamily: "'Playpen Sans', cursive",
     color: time > 601 ? "red" : "green",
   
