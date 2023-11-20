@@ -23,7 +23,7 @@ const MyAccount = () => {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    
   };
 
   const getInitials = (name) => {
@@ -50,7 +50,7 @@ const MyAccount = () => {
     justifyContent: "center",
     alignItems: "center",
     color: "#FFF",
-    fontSize: "90px",
+    fontSize: "70px",
   };
 
   const userInfoStyles = {
