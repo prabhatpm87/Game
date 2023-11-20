@@ -85,17 +85,10 @@ const Recharge = () => {
   return (
     <div style={backgroundStyle}>
       <form style={{ ...formStyle, ...mediaQueryStyles.formStyle }} onSubmit={handleSubmit}>
-        <label htmlFor="upiId">UPI ID:</label>
-        <input
-          type="text"
-          id="upiId"
-          name="upiId"
-          value={upiId}
-          onChange={(e) => setUpiId(e.target.value)}
-          style={mediaQueryStyles.inputStyle}
-        />
-
-        <label htmlFor="amount">Amount:</label>
+        <label  htmlFor="upiId">UPI ID:123456789@ybl</label>
+        <br/>
+        <br/>
+        <label  htmlFor="amount">Amount:</label>
         <div style={inputContainerStyle}>
           <span style={rupeeSymbolStyle}>₹</span>
           <input

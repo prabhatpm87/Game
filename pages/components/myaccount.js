@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Image from "next/image";
 import { useRouter } from "next/router"; // Import useRouter from next/router
 import { ImShare2 } from 'react-icons/im';
 import { MdModeEdit } from 'react-icons/md';
@@ -19,7 +19,7 @@ const MyAccount = () => {
   const backgroundStyles = {
     backgroundImage: "url('/banner2.jpg')",
     backgroundSize: "cover",
-    height: "150vh",
+    height: "120vh",
     width: "100%",
     display: "flex",
     justifyContent: "center",
@@ -138,11 +138,27 @@ const MyAccount = () => {
     justifyContent:"center"
   };
 
+  const footerStyle = {
+    background: "#e3f2fd",
+    boxShadow: "0px 5px 5px -5px rgba(0, 0, 0, 0.75)",
+    display: "flex",
+    justifyContent: "space-around",
+    height: "80px",
+    position: "fixed", // Change to fixed for a fixed position at the bottom
+    bottom: 0, // Place the footer at the bottom
+    width: "100%", // Ensure the footer spans the full width
+  };
+  const handleMyAccountClick = () => {
+    // Define the logic you want to execute when My Account is clicked
+    // For example, you can navigate to the My Account page using the router
+    router.push("/components/myaccount");
+  };
+
   return (
     <div style={backgroundStyles}>
       <div
         style={{
-          width: "350px",
+          width: "450px",
           padding: "0px",
           display: "flex",
           flexDirection: "column",
@@ -236,6 +252,45 @@ const MyAccount = () => {
           </Link>
         </div>
       </div>
+      <footer style={footerStyle}>
+          <div
+            style={{
+              background: "#e3f2fd",
+              boxShadow: "0px 5px 5px -5px rgba(0, 0, 0, 0.75)",
+              display: "flex",
+              justifyContent: "space-around",
+              height:"80px",
+            }}
+          >
+            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"0px" }}>
+              <Link href="/">
+                <Image
+                  src="/Dashboard.png"
+                  alt="Image 3"
+                  width={30}
+                  height={30}
+                />
+                <p style={{marginTop:"1px"}}>Home</p>
+              </Link>
+            </div>
+            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"200px" }}>
+              <div onClick={handleMyAccountClick}>
+                <Link
+                  href="/components/myaccount"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Image
+                    src="/My Account.png"
+                    alt="Image 3"
+                    width={30}
+                    height={30}
+                  />
+                  <p style={{marginTop:"1px"}}>My Account</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </footer>
     </div>
   );
 };

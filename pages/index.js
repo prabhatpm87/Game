@@ -188,6 +188,10 @@ const balanceStyle = {
   fontSize: "20px",
   borderRadius: "5px",
 
+  '@media (max-width: 540px)': {
+    width:"100px"
+  },
+
   '@media (max-width: 768px)': {
     width: "180px", // Adjusted width for smaller screens
   },
@@ -304,7 +308,7 @@ const balanceStyle = {
             }}
           >
             <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"0px" }}>
-              <Link href="/components/Dashboard">
+              <Link href="/">
                 <Image
                   src="/Dashboard.png"
                   alt="Image 3"
