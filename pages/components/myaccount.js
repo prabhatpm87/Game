@@ -19,21 +19,22 @@ const MyAccount = () => {
   const backgroundStyles = {
     backgroundImage: "url('/banner2.jpg')",
     backgroundSize: "cover",
-   
+    height: "200vh",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center", // Center content vertically
   
     '@media (min-width: 600px)': {
-      height: "100vh", // Adjust height for medium screens
+      height: "200vh", // Adjust height for medium screens
     },
   
     '@media (min-width: 768px)': {
-      height: "100vh", // Adjust height for large screens
+      height: "200vh", // Adjust height for large screens
     },
   
     '@media (min-width: 1024px)': {
-      height: "100vh", // Adjust height for extra-large screens
+      height: "200vh", // Adjust height for extra-large screens
     },
   };
 
