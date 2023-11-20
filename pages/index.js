@@ -311,10 +311,10 @@ const balanceStyle = {
                   width={30}
                   height={30}
                 />
-                <p style={{marginTop:"1px"}}>Dashboard</p>
+                <p style={{marginTop:"1px"}}>Home</p>
               </Link>
             </div>
-            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"300px" }}>
+            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"200px" }}>
               <div onClick={handleMyAccountClick}>
                 <Link
                   href="/components/myaccount"

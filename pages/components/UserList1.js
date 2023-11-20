@@ -31,7 +31,7 @@ const UserList = ({ loggedInUser }) => {
           marginLeft:"10px"
         }}
       >
-        <table style={{ width: "97%", borderCollapse: "collapse" }}>
+        <table style={{ width: "97%", borderCollapse: "collapse",textAlign: 'center' }}>
           <thead style={{ position: "sticky", top: 0, background: "white" }}>
             <tr>
               <th style={{ marginLeft:"5px",border: "none", padding: "5px",backgroundColor: '#333',

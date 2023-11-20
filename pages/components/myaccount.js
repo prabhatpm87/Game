@@ -25,16 +25,16 @@ const MyAccount = () => {
     justifyContent: "center",
     alignItems: "center", // Center content vertically
   
-    '@media (min-width: 600px)': {
-      height: "60vh", // Adjust height for medium screens
+    '@media (min-width: 300px)': {
+      height: "50vh", // Adjust height for medium screens
     },
   
-    '@media (min-width: 768px)': {
+    '@media (min-width:400px)': {
       height: "70vh", // Adjust height for large screens
     },
   
-    '@media (min-width: 1024px)': {
-      height: "900vh", // Adjust height for extra-large screens
+    '@media (min-width: 648px)': {
+      height: "90vh", // Adjust height for extra-large screens
     },
   };
 
