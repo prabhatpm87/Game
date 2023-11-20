@@ -23,7 +23,19 @@ const MyAccount = () => {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    
+    alignItems: "center", // Center content vertically
+  
+    '@media (min-width: 600px)': {
+      height: "100vh", // Adjust height for medium screens
+    },
+  
+    '@media (min-width: 768px)': {
+      height: "100vh", // Adjust height for large screens
+    },
+  
+    '@media (min-width: 1024px)': {
+      height: "100vh", // Adjust height for extra-large screens
+    },
   };
 
   const getInitials = (name) => {
@@ -51,6 +63,25 @@ const MyAccount = () => {
     alignItems: "center",
     color: "#FFF",
     fontSize: "70px",
+    marginBottom: "10px", // Add margin for spacing
+  
+    '@media (min-width: 600px)': {
+      width: "80px",
+      height: "80px",
+      fontSize: "80px",
+    },
+  
+    '@media (min-width: 768px)': {
+      width: "100px",
+      height: "100px",
+      fontSize: "100px",
+    },
+  
+    '@media (min-width: 1024px)': {
+      width: "120px",
+      height: "120px",
+      fontSize: "120px",
+    },
   };
 
   const userInfoStyles = {
