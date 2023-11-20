@@ -196,7 +196,7 @@ const UserListStyle = {
     display: "flex",
     justifyContent: "space-around",
     height: "80px",
-    position: "absolute", // Position the footer absolutely
+    position: "fixed", // Change to fixed for a fixed position at the bottom
     bottom: 0, // Place the footer at the bottom
     width: "100%", // Ensure the footer spans the full width
   };
