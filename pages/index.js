@@ -303,7 +303,7 @@ const balanceStyle = {
               height:"80px",
             }}
           >
-            <div style={{ marginTop: "19px", textAlign: "center" }}>
+            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"0px" }}>
               <Link href="/components/Dashboard">
                 <Image
                   src="/Dashboard.png"
@@ -314,7 +314,7 @@ const balanceStyle = {
                 <p style={{marginTop:"1px"}}>Dashboard</p>
               </Link>
             </div>
-            <div style={{ marginTop: "19px", textAlign: "center" }}>
+            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"300px" }}>
               <div onClick={handleMyAccountClick}>
                 <Link
                   href="/components/myaccount"
