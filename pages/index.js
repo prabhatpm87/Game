@@ -159,8 +159,8 @@ const UserListStyle = {
   marginTop: "auto", // Use auto to push the UserList to the bottom
   marginBottom: "0px", // Space for the footer
   backgroundColor: "white",
-  marginLeft: "10px", // Adjust margin based on your design
-  marginRight: "10px", // Adjust margin based on your design
+  marginLeft: "40px", // Adjust margin based on your design
+  marginRight: "40px", // Adjust margin based on your design
   
 
   '@media (max-width: 768px)': {
