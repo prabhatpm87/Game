@@ -157,20 +157,23 @@ const Home = () => {
   
 const UserListStyle = {
   marginTop: "auto", // Use auto to push the UserList to the bottom
-  marginBottom: "80px", // Space for the footer
+  marginBottom: "0px", // Space for the footer
   backgroundColor: "white",
   marginLeft: "10px", // Adjust margin based on your design
   marginRight: "10px", // Adjust margin based on your design
+  
 
   '@media (max-width: 768px)': {
     marginTop: "50px", // Adjusted value for smaller screens
     marginLeft: "5px", // Adjusted margin for smaller screens
     marginRight: "5px", // Adjusted margin for smaller screens
+    marginBottom: "80px", // Ensure space for the footer on smaller screens
   },
   '@media (max-width: 600px)': {
     marginTop: "30px", // Further adjustment for even smaller screens
     marginLeft: "2px", // Adjusted margin for even smaller screens
     marginRight: "2px", // Adjusted margin for even smaller screens
+    marginBottom: "80px", // Ensure space for the footer on even smaller screens
   },
 };
 
@@ -314,7 +317,7 @@ const UserListStyle = {
               </div>
             </div>
 
-            <div style={{ marginTop: "19px", textAlign: "center" }}>
+            <div style={{ marginTop: "19px", textAlign: "center",marginLeft:"400px" }}>
               <Link href="/components/Dashboard">
                 <Image
                   src="/Dashboard.png"
