@@ -19,7 +19,7 @@ const MyAccount = () => {
   const backgroundStyles = {
     backgroundImage: "url('/banner2.jpg')",
     backgroundSize: "cover",
-    height: "200vh",
+    height: "150vh",
     width: "100%",
     display: "flex",
     justifyContent: "center",
